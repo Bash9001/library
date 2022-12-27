@@ -1,0 +1,54 @@
+:root {
+
+}
+
+.titleHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+#gridContainer {
+    display: grid;
+    grid-template: 1fr / repeat(6, 1fr);
+    column-gap: 15px;
+    grid-auto-rows: 1fr;
+    row-gap: 15px;
+}
+
+#bookCreator {
+    background-color: rgb(107, 75, 195);
+    border: solid 2px black;
+    margin: 5px;
+    padding: 10px;
+}
+
+#bookForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+#bookForm.label {
+    margin-top: 5px;
+}
+
+#publishBook {
+    margin-top: 5px;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    margin-top: 10px;
+}
