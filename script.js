@@ -2,15 +2,17 @@ let library = []
 const bookShelf = document.getElementById('gridContainer')
 const form = document.getElementById('bookForm');
 
-function Book (title, author, pages, read) {
+function Book (title, author, pages, colour, isRead) {
   this.title = title;
   this.author = author;
   this.pages = pages;
-  this.isRead = read;
+  this.colour = colour;
+  this.isRead = isRead;
 };
 
 function addBook (e) {
   const newEntry = document.createElement('div')
+  newEntry.style.background = e.colour
   newEntry.classList.add('books')
 
   const newTitle = document.createElement('h1')
@@ -23,8 +25,8 @@ function addBook (e) {
   newAuthor.classList.add('authors')
   newEntry.appendChild(newAuthor)
 
-  const newPages = document.createElement('p')
-  newPages.textContent = e.pages
+  const newPages = document.createElement('div')
+  newPages.textContent = e.pages + ' pages'
   newPages.classList.add('pages')
   newEntry.appendChild(newPages)
 
@@ -34,7 +36,6 @@ function addBook (e) {
   newEntry.appendChild(newRead)
 
   library.push(newEntry)
-  bookShelf.appendChild(newEntry)
 };
 
 form.addEventListener('submit', (event) => {
@@ -42,15 +43,11 @@ form.addEventListener('submit', (event) => {
   let nt = form.elements['title']
   let na = form.elements['author']
   let np = form.elements['pages']
+  let nc = form.elements['colour']
   let nr = form.elements['isRead']
-  let newBook = Book(nt.value, na.value, np.value, nr.value);
-  console.log(nt.value)
-  console.log(na.value)
-  console.log(np.value)
-  console.log(nr.value)
+  let newBook = new Book(nt.value, na.value, np.value, nc.value, nr.value);
   addBook(newBook);
-  // library.forEach((book) => {
-    // bookShelf.appendChild(book)
-  console.log(library)
-  // });
+  library.forEach((book) => {
+    bookShelf.appendChild(book)
+  });
 });
